@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.2 -->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <object class="GtkWindow" id="window">
+    <property name="can_focus">False</property>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkFixed" id="fixed1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkButton" id="button1">
+            <property name="label" translatable="yes">Send</property>
+            <property name="width_request">100</property>
+            <property name="height_request">1</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="on_button1_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">410</property>
+            <property name="y">500</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="entry1">
+            <property name="width_request">400</property>
+            <property name="height_request">35</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="vexpand">True</property>
+            <signal name="changed" handler="on_entry1_changed" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">5</property>
+            <property name="y">500</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow" id="ScrolledWindow">
+            <property name="width_request">502</property>
+            <property name="height_request">495</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="margin_bottom">54</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkViewport" id="ViewPort">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkTextView" id="TextView">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="left_margin">5</property>
+                    <property name="right_margin">5</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">7</property>
+            <property name="y">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
