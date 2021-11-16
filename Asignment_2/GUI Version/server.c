@@ -9,6 +9,7 @@
 #include <pthread.h>
 #include <sys/types.h>
 #include <signal.h>
+#include<time.h>
 
 #define MAX_CLIENTS 100
 #define BUFFER_SZ 2048
@@ -101,18 +102,20 @@ void *handle_client(void *arg){
 	char buffer[BUFFER_SZ];
 	char name[32];
 	int leave_flag = 0;
+	time_t t;   // not a primitive datatype
+    time(&t);
 
 	cli_count++;
 	client_t *cli = (client_t *)arg;
 
 	// Name
 	if(recv(cli->sockfd, name, 32, 0) <= 0 || strlen(name) <  2 || strlen(name) >= 32-1){
-		printf("Didn't enter the name.\n");
+		printf("You didn't enter a valid name/name too long (32 Characters MAX).\n");
 		leave_flag = 1;
 	} else{
 		strcpy(cli->name, name);
 		sprintf(buffer, "%s has joined", cli->name);
-		printf("%s", buffer);
+		printf("%s\n", buffer);
 		send_message(buffer, cli->uid);
 	}
 
@@ -129,7 +132,7 @@ void *handle_client(void *arg){
 				send_message(buffer, cli->uid);
 
 				str_trim_lf(buffer, strlen(buffer));
-				printf("%s -> %s\n", buffer, cli->name);
+				printf("%s -> %s @: %s\n", buffer, cli->name, ctime(&t));
 			}
 		} else if (receive == 0 || strcmp(buffer, "exit") == 0){
 			sprintf(buffer, "%s has left", cli->name);
